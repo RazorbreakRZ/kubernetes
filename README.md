@@ -1,0 +1,1 @@
+Sample project to play with k8s
