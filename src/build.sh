@@ -1,5 +1,5 @@
 #!/bin/bash
-
+REPO=djmartinez.io
 IMAGE=$1
 VERSION=$2
 
@@ -11,4 +11,5 @@ if [ -z "${VERSION}" ]; then
     VERSION=1.0
 fi
 
-echo sudo docker build -t io/djmartinez/$IMAGE:$VERSION $IMAGE
+sudo docker rmi -f $REPO/$IMAGE:$VERSION
+sudo docker build -t $REPO/$IMAGE:$VERSION $IMAGE
