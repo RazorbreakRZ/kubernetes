@@ -1,0 +1,8 @@
+version: "3"
+services: 
+  frontend:
+    image: io/djmartinez/frontend:1.0
+    ports: [ "80:80" ]
+  mathematics:
+    image: io/djmartinez/mathematics:1.0
+    ports: [ "5000:5000" ]
