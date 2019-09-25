@@ -4,7 +4,8 @@ WORKDIR /app
 COPY ./ /app/frontend
 
 RUN pip install \
-    flask
+    flask \
+    requests
 
 EXPOSE 80
 
