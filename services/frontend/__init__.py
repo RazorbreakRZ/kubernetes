@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from flask import Flask, escape, request, render_template
 
 service_status = { "status": "DOWN" }
