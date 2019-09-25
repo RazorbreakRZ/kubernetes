@@ -16,6 +16,14 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: djmartinez.io/frontend:1.0
+        image: djmartinez.io/frontend:2.0
         ports:
         - containerPort: 80
+        volumeMounts:
+          - name: config-volume
+            mountPath: /app/frontend/config.json
+            subPath: config.json
+      volumes:
+        - name: config-volume
+          configMap:
+            name: frontend-config

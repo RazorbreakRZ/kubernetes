@@ -18,4 +18,4 @@ spec:
       - name: mathematics
         image: djmartinez.io/mathematics:1.0
         ports:
-        - containerPort: 80
+        - containerPort: 5000
