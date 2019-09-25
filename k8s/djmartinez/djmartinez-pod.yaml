@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: djmartinez-pod
+  labels:
+    app: djmartinez-app
+spec:
+  containers:
+  - name: frontend
+    image: djmartinez.io/frontend:1.0
+    ports:
+    - containerPort: 80
+  - name: mathematics
+    image: djmartinez.io/mathematics:1.0
+    ports:
+    - containerPort: 5000
