@@ -1,4 +1,15 @@
 from flask import Flask
+import json
+
+cfg = {
+    "external_services": {}
+}
+
+print " ~ Loading configuration file..."
+with open('frontend/config.json') as json_data_file:
+    # global cfg
+    cfg = json.load(json_data_file)
+
 app = Flask(__name__)
 
 service_status = { "status": "DOWN" }

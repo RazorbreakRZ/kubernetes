@@ -1,14 +1,9 @@
 import requests
+from frontend import cfg
 
-PROTOCOL = "http"
-HOST = "localhost"
-PORT = "5000"
-ENDPOINT = "/api/v1/random"
-
-def getRandomValue():  
-    URL = PROTOCOL + "://" + HOST + ":" + PORT + ENDPOINT
-    PARAMS = {}
-    response = requests.get(url = URL, params = PARAMS)
+def getRandomValue():
+    url = cfg["externalServices"]["mathematics"]["url"] + cfg["externalServices"]["mathematics"]["endpoints"]["random"]
+    response = requests.get(url)
     data = response.json()
     return data["value"]
 
