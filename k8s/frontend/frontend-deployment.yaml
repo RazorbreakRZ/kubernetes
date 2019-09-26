@@ -14,16 +14,16 @@ spec:
       labels:
         app: frontend-app
     spec:
+      volumes:
+        - name: frontend-config-volume
+          configMap:
+            name: frontend-config
       containers:
       - name: frontend
         image: djmartinez.io/frontend:2.0
         ports:
         - containerPort: 80
         volumeMounts:
-          - name: config-volume
+          - name: frontend-config-volume
             mountPath: /app/frontend/config.json
             subPath: config.json
-      volumes:
-        - name: config-volume
-          configMap:
-            name: frontend-config
