@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mathematics-pod
+  labels:
+    app: mathematics-app
+spec:
+  containers:
+  - name: mathematics
+    image: djmartinez.io/mathematics:1.0
+    ports:
+    - containerPort: 5000

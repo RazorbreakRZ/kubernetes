@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-app
+  template:
+    metadata:
+      labels:
+        app: frontend-app
+    spec:
+      volumes:
+        - name: frontend-config-volume
+          configMap:
+            name: frontend-config
+      containers:
+      - name: frontend
+        image: djmartinez.io/frontend:2.0
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: frontend-config-volume
+            mountPath: /app/frontend/config.json
+            subPath: config.json

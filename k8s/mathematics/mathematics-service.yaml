@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mathematics-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: mathematics-app
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000

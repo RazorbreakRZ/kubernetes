@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: djmartinez-deployment
+  labels:
+    app: djmartinez-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: djmartinez-app
+  template:
+    metadata:
+      labels:
+        app: djmartinez-app
+    spec:
+      containers:
+      - name: frontend
+        image: djmartinez.io/frontend:1.0
+        ports:
+        - containerPort: 80
+      - name: mathematics
+        image: djmartinez.io/mathematics:1.0
+        ports:
+        - containerPort: 80

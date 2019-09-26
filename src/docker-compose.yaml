@@ -1,0 +1,9 @@
+version: "3"
+services: 
+  frontend:
+    image: djmartinez.io/frontend:2.0
+    ports: [ "80:80" ]
+    volumes: [ "./conf/frontend/config.json:/app/frontend/config.json" ]
+  mathematics:
+    image: djmartinez.io/mathematics:1.0
+    ports: [ "5000:5000" ]
