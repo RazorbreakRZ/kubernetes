@@ -1,0 +1,10 @@
+{ 
+    "externalServices": {
+        "mathematics": {
+            "url": "http://mathematics:5000",
+            "endpoints": {
+                "random": "/api/v1/random"
+            }
+        }
+    }
+}
