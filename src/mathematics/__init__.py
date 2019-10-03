@@ -5,7 +5,7 @@ service_status = { "status": "DOWN" }
 service_info = {
     "group": "io.djmartinez",
     "name": __name__,
-    "version": 1,
+    "version": 2,
     "api_version": 1,
     "author": "djmartinez"
 }

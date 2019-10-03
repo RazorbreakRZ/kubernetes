@@ -5,5 +5,5 @@ services:
     ports: [ "80:80" ]
     volumes: [ "./conf/frontend/config.json:/app/frontend/config.json" ]
   mathematics:
-    image: djmartinez.io/mathematics:1.0
+    image: djmartinez.io/mathematics:2.0
     ports: [ "5000:5000" ]
