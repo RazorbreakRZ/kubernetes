@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: djmartinez-io
+  name: mathematics-deployment
+  labels:
+    app: mathematics-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mathematics-app
+  template:
+    metadata:
+      labels:
+        app: mathematics-app
+    spec:
+      containers:
+      - name: mathematics
+        image: 929418935801.dkr.ecr.eu-central-1.amazonaws.com/djmartinez.io/mathematics:1.0
+        ports:
+        - containerPort: 5000
