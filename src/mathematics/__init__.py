@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from flask import Flask, escape, request
+from flask_cors import CORS
 
 service_status = { "status": "DOWN" }
 service_info = {
