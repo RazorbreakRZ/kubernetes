@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: djmartinez-io
+  name: frontend-config
+data:
+  config.json: |
+    { 
+      "externalServices": {
+        "mathematics": {
+            "url": "http://mathematics-service:5000",
+            "endpoints": {
+              "random": "/api/v1/random"
+            }
+          }
+        }
+    }

@@ -4,5 +4,6 @@ import mathematics.views.info
 import mathematics.views.health
 import mathematics.views.randomgen
 import mathematics.views.configserver
+import mathematics.views.arithmeticOperators
 
 service_status["status"] = "UP"
