@@ -53,7 +53,6 @@ print " - Mapped endpoint: /v1/configuration/gettemplate"
 def getTemplates():
     requestJson = request.get_json()
     print requestJson
-    print database.keys
     response = {
         "templates": list(database.keys())
     }
