@@ -1,4 +1,6 @@
 from mathematics import app, CORS, request
+import requests
+from base64 import b64encode
 cors = CORS(app, resources={r"/v1/*": {"origins": "*"}})
 
 database = {
@@ -73,6 +75,43 @@ print " - Mapped endpoint: /v1/configuration/posttemplate"
 def generatePdf():
     requestJson = request.get_json()
     print requestJson
-    response = "MA=="
-    return response, 200
+    url = "http://a0e31da6f532d11ea9f3d0262cbbced7-809988180.eu-central-1.elb.amazonaws.com:6677/generatePdf"
+    pageHtml = database[requestJson["templateName"]]
+    for key,value in requestJson["metadata"].items():
+        pageHtml = pageHtml.replace("%"+key+"%",value)
+        print "Replaced metadata: "+key
+    pageHtml = pageHtml.replace("<br>","<br />")
+    data = {
+        "colour_profile": None,
+        "font_map": None,
+        "page_html": b64encode("\
+            <html>\
+                <head>\
+                    <style>\
+                        pre, code, var {\
+                            font-family:'courier',serif;\
+                        }\
+                        body {\
+                            font-family:'arial',serif;\
+                        }\
+                        img {\
+                            image-rendering: pixelated;\
+                        }\
+                        table {\
+                            border: 1px solid black;\
+                        }\
+                    </style>\
+                </head>\
+                <body>"+pageHtml+"</body>\
+            </html>"),
+        "conformance_level": "PDFA_1_B"
+    }
+    serviceResponse = requests.post(url=url, json=data)
+    print serviceResponse
+    response = {}
+    responseCode = 400
+    if serviceResponse.status_code == 200:
+        response = serviceResponse.text
+        responseCode = 200
+    return response, responseCode
 print " - Mapped endpoint: /v1/configuration/generatepdf"
