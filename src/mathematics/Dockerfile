@@ -3,8 +3,12 @@ FROM python:2.7-alpine
 WORKDIR /app
 COPY ./ /app/mathematics
 
-RUN pip install \
-    flask
+RUN apk add --update --no-cache g++ gcc libxslt-dev && \
+    pip install \
+    flask \
+    flask_cors \
+    requests \
+    lxml
 
 EXPOSE 5000
 
